@@ -1,3 +1,6 @@
-# etch_a_sketch
+# Etch a Sketch
 
-Preview can be found here: http://htmlpreview.github.io/?https://github.com/KevinMulhern/etch_a_sketch/blob/master/index.html
+A project for practicing the DOM on [The Odin Project](https://www.theodinproject.com/dashboard)
+
+[Demo](http://htmlpreview.github.io/?https://github.com/KevinMulhern/etch_a_sketch/blob/master/index.html
+)
