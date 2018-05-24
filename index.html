@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Etch-a-Sketch</title>
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-	
-
+  <title>Etch-a-Sketch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 </head>
 <body>
-		<div class="container">
-			<header>
-				<h1>Etch-a-Sketch Project</h1>
-			</header>
-			<div class="main-container">
-			<nav>
-				<form>
-					<button type="button" class="btn-clear">Clear</button>
-					<button typle="button" class="rainbow">Rainbow Mode</button>
-				</form>
-			</nav>
-				<div class="etch-frame">
-					<h2>Etch a Sketch</h2>
-					<div class= "right-knob">
-					</div>
-						<div class="grid">
-						</div>
-					<div class="left-knob">
-					</div>
-			</div>
-			<footer>
-			<p>Created by: Kevin Mulhern</p>
-			</footer>
+  <div class="container">
+		<div class="frame">
+			<h1>Etch a Sketch</h2>
+			<div class="grid"></div>
+      	<div class="knob knob__left">
+          <span class="knob__text">Clear</span>
+        </div>
+        <div class="knob knob__right">
+          <span class="knob__text">Color</span>
+        </div>
 		</div>
-	<script type="text/javascript" src="javascript/jquery.js"></script>
+	</div>
+
 	<script type="text/javascript" src="javascript/application.js"></script>
 </body>
 </html>

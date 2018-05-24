@@ -1,108 +1,53 @@
+function createRows(grid, size = 16) {
+  for(let rows = 0; rows < size; rows++) {
+    const row = document.createElement("div")
 
-$(document).ready(function() {
-		createGrid(16)
-		randColor()
+    row.classList.add("row");
+    row.style.cssText = `height: ${100 / size}%`;
+    grid.appendChild(row);
+    addCells(row, size)
+  }
+}
 
+function addCells(row, size = 16) {
+  for(let cells = 0; cells < size; cells++) {
+    const cell = document.createElement("div")
 
-	$('.btn-clear').click(function(event){
-		 event.preventDefault()
-		$('.grid').empty();
-		var input = prompt("How many rows do you want in the grid?");
-		console.log(input);
-		createGrid(input);
-	});
+    cell.classList.add("cell");
+    cell.style.cssText = `opacity: 0; width: ${100 / size}%`;
+    cell.addEventListener("mouseover", blackHover)
+    row.appendChild(cell)
+  }
+}
 
-	$(".square").hover(function(){
-			$(this).addClass('black');
-			console.log('hovering')
-		});
+function blackHover() {
+  this.style.background = "#000";
+  this.style.opacity = parseFloat(this.style.opacity) + 0.2;
+}
 
-	$('.rainbow').click(function(event){
-	event.preventDefault();
-	$('.square').hover(function(){
-		$(this).css('background-color', randColor());
-	});
-});
+function multiColorHover() {
+  const cells = document.querySelectorAll(".cell")
 
+  cells.forEach(function(cell) {
+    cell.addEventListener("mouseover", function(e) {
+      const color =  "#" + Math.random().toString(16).slice(2, 8);
 
-});
+      e.target.style.background = color;
+      e.target.style.opacity = parseFloat(this.style.opacity) + 0.2;
+    })
+  })
+}
 
+function clearGrid() {
+  const grid = document.querySelector(".grid")
+  const size = prompt("What size would you like the new grid to be? (size x size)")
 
+  grid.innerHTML = "";
+  createRows(grid, size)
+}
 
-function createGrid(size) {
-		var numRows = size;
-		var numCols = size;
+document.querySelector(".knob__left").addEventListener("click", clearGrid)
+document.querySelector('.knob__right').addEventListener("click", multiColorHover)
 
-		//Create the rows
-
-		// First set thier width and height
-		var rowHeight = parseFloat($('.grid').height() / numRows);
-		var rowWidth = parseFloat($('.grid').width());
-
-		//Create the rows:
-		for (var i = 0; i < numRows; i++) {
-			$('<div class="row"> </div>').appendTo('.grid').height(rowHeight).width(rowWidth);
-		};
-
-		// create the squares
-		for (var i = 0; i < numCols; i++) {
-			$('<div class="square"> </div>').appendTo('.row')
-		};
-
-		// find the height and width of te squares
-		var squareWidth = rowWidth / numCols;
-		var squareHeight = rowHeight;
-
-		$('.square').width(squareWidth)
-		$('.square').height(squareHeight)
-
-		//the hover effect.
-		$(".square").mouseover(function(){
-			$(this).css('background-color', '#000')
-		});
-
-
-
-};
-
-function randColor(){
-	var col = '#'
-	var ColArray = ['1','2','3','4','5','6','7','8','9','0', 'A','B', 'C', 'D', 'E', 'F']
-	for (var i = 0; i < 6; i++){
-		col += ColArray[Math.floor(Math.random()*15)]
-		console.log(col)
-	}
-	return col;
-	console.log(col)
-};
-
-$('.rainbow').click(function(event){
-	event.preventDefault;
-		$('.square').hover(function(){
-			$(this).css('background-color', randColor());
-		});
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
+const grid = document.querySelector(".grid")
+createRows(grid, 16)
